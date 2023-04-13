@@ -1,4 +1,4 @@
-# Small projects
+# "Don't sweat the small stuff man"
 
 <img src="https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg" align="right" height="200"/>
 
