@@ -93,27 +93,34 @@ function Circle(x,y,dx,dy,circleRadius) {
         }
         this.x += this.dx; // currently, X velocity is 4 pixel/second
         this.y += this.dy; // currently  y velocity is 4 pixel/second
+        this.draw();
     }
 }
 
+var circleArray = [];
+
+for (var i = 0; i < 100; i++) {
+    var x = Math.random() * (innerWidth - circleRadius * 2) + circleRadius;
+    var y = Math.random() * (innerHeight - circleRadius * 2) + circleRadius;
+    var dx = Math.random() - 0.5;
+    var dy = Math.random() - 0.5;
+    var circleRadius = 30; // determined by drawing of arc 
+    circleArray.push(new Circle(x,y,dx,dy,circleRadius));
+}
+
 // instantiating a new instance of the Circle object
-var circle = new Circle(200,200,5,5,30);
+// var circle = new Circle(200,200,5,5,30);
 
 // main animation function loop refreshes the page repeatedly to simulate animation as the coordinates change
-var x = Math.random() * innerWidth;
-var y = Math.random() * innerHeight;
-var dx = (Math.random() - 0.5) * 20;
-var dy = (Math.random() - 0.5) * 20;
-var circleRadius = 30; // determined by drawing of arc 
-
 // animate() function
 function animate() {
     requestAnimationFrame(animate); // recursive function call
-
-    // we clear the screen first, then draw the circle, and only then update its location and redraw
+    // we clear the screen first, then update the circle data and redraw it
     c.clearRect(0,0, innerWidth, innerHeight);
-    circle.draw();
-    circle.update();
+    for (var i =0; i < circleArray.length; i++) {
+        circleArray[i].update();
+    }
 }
 
 animate();
+
