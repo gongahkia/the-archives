@@ -29,21 +29,20 @@ c.fill();
 // * add detection of player input and figure out the integration of objects later
 // * integrate player input and player movement into the character controller
 
-/* var colorArray = ['blue', 'red', 'yellow', 'green', 'pink', 'cyan', 'purple', 'orange', 'black']
-var color = colorArray[Math.floor(Math.random() * colorArray.length)];
-
-function player(x:number,y:number,radius:number) {
+/* function player(x:number,y:number,radius:number) {
     
     this.x = x;
     this.y = y;
     this.radius = radius;
 
     this.draw() {
+        var colorArray = ['blue', 'red', 'yellow', 'green', 'pink', 'cyan', 'purple', 'orange', 'black']
+        var color = colorArray[Math.floor(Math.random() * colorArray.length)];
         c.beginPath();
         c.arc(x,y,radius,Math.PI * 2, false);
         c.strokeStyle = color;
-        c.fillStyle = color;
         c.stroke();
+        c.fillStyle = color;
         c.fill();
     };
 
