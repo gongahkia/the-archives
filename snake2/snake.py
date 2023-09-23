@@ -60,14 +60,15 @@ def print_grid(snake_coordinate_list:list, fruit_coordinate_list:list, snake_len
             for fruit_coordinate in fruit_coordinate_list:
                 if [x,y] == fruit_coordinate:
                     row_string += "O"
+                    continue
                     # row_string += colored("O","red")
             for snake_coordinate in snake_coordinate_list:
                 if [x,y] == snake_coordinate:
                     row_string += "X"
+                    continue
                     # row_string += colored("X","green")
-            else:
-                row_string += " "
-                # print(" ",end="")
+            row_string += " "
+            # print(" ",end="")
         row_string = row_string[:50]
         print(row_string, end="")
         print("|")
