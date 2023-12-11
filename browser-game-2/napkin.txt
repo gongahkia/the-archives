@@ -1,0 +1,35 @@
+~ ethos
+* functional programming
+* all data to be represented in data structures
+* all data transformed through explicit returns in functions
+* clean, readable code
+
+~ FUA
+* itch io player background and entity sprites
+* itch io text sprites
+* work out animations also
+* display sprites to the screen
+* read a stored text file to display the level layout
+* enemy path-finding AI
+    * monster chases player until player out of sight and sound cones respectively
+* unique player input (reload gun/pick lock), monitor input of mouse when pressing and holding
+* port over to all browsers
+* procedural generation for terrain to text file 
+    * wave function collapse?
+* make this accesible via a browser extension(?)
+* work out how to resize canvas when window size changes
+* render all player information separately as text as well
+* add world clock that moves even if player is not moving
+
+~ horror game
+* player disempowerment
+* limited vision cones
+* implement unnerving sound design
+* multiplayer?
+    * proximity chat
+* multiple enemy types
+
+~ ideas bucket
+* minimal rhythm-based bullet-hell game 
+    * movement grid-based
+    * player on a small platform that fragments as boss sends shockwaves
