@@ -1,5 +1,7 @@
 # personal portfolio site version 2
 
+with japanese langauge support!!!
+
 ### technologies
 
 ![TypeScript](https://img.shields.io/badge/-TypeScript-000?&logo=TypeScript)
