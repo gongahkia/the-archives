@@ -1,6 +1,4 @@
-# second version of personal site
-
-## THIS SITE IS NOW LIVE [HERE](https://gongahkia.github.io)!
+# personal portfolio site version 2
 
 ### technologies
 
@@ -13,3 +11,10 @@
 
 * [icons](https://simpleicons.org/?q=smile)
 * [visual reference](https://www.adamalston.com/)
+
+## screenshots 
+
+![](https://github.com/gongahkia/small-stuff/assets/117062305/14ff1622-bd32-4f28-aa42-35af45c25c50)
+![](https://github.com/gongahkia/small-stuff/assets/117062305/07f0029f-4f39-4a87-a5b9-85ffcd5e0eb3)
+![](https://github.com/gongahkia/small-stuff/assets/117062305/0ff9e390-eee2-47d2-8d15-43f5bdcff121)
+![](https://github.com/gongahkia/small-stuff/assets/117062305/5dd2ae36-1fc3-4326-ad28-6955d4d12717)
