@@ -1,6 +1,7 @@
 # personal portfolio site version 2
 
-with japanese langauge support!!!
+* japanese langauge support
+* infinite color wheel 
 
 ### technologies
 
