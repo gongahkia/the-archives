@@ -1,7 +1,8 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import './main.css';
+  import TypeRacer from './lib/Typeracer.svelte';
 </script>
 
-
+<main>
+      <TypeRacer></TypeRacer>
+</main>
