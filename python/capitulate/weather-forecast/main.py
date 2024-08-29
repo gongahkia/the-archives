@@ -1,3 +1,6 @@
+# implement this in scrapy instead  to prepare for ian chai's internship and toolchains
+    # https://scrapy.org/
+
 import requests
 import json
 
