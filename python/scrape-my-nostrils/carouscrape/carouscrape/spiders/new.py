@@ -10,6 +10,25 @@ class CarousellSpider(scrapy.Spider):
 
     def parse(self, response):
 
+# important divs
+# 
+# some divs to take note of
+#
+# D_mv => seller profile image
+# D_jL D_jM D_jQ D_jS D_jW D_jZ D_ki => seller username
+# D_jL D_jM D_jQ D_jS D_jW D_jY D_oQ D_kj => seller last seen status
+#
+# ----------
+# 
+# D_kl D_Ry => item image
+# D_jL D_jM D_jQ D_jT D_jW D_jY D_jU D_ki => item name
+# D_jL D_jM D_jQ D_jS D_jW D_jZ D_kh => item price
+# D_jL D_jM D_jQ D_jS D_jW D_jY D_ki => item state (new, old, used)
+# D_lq D_pf => like the item
+# D_lq => more details
+#
+# ----------
+
         for quote in response.css('div.D_uR.D_ot'):
 
             yield {
