@@ -23,17 +23,29 @@ for sent in doc.sents:
     # print(sent.text)
     document_sentences_array.append(sent.text)
 
-def show_all_entities(doc):
-    print("entities identified within the text")
-    for ent in doc.ents:
-        print(f'{ent.text}: {ent.label_}')
-    return
+def collect_tokens(doc):
+    token_map = {}
+    for token in doc:
+        token_map[token.idx] = token.text
+    return token_map
+
+def collect_dependencies(doc):
+    dependancy_map = {}
+    for token in doc:
+        dependancy_map[token.text] = [token.dep, token.head.text]
+    return dependancy_map
 
 def collect_entities(doc):
     entities_map = {}
     for ent in doc.ents:
         entities_map[ent.label_] = ent.text
     return entities_map
+
+def collect_lemmas(doc):
+    lemma_array = {}
+    for token in doc:
+        lemma_array[token.text] = token.lemma_
+    return lemma_array
 
 def identify_speakers(doc):
     speakers = []
@@ -53,3 +65,4 @@ def identify_noun_chunks(doc):
 print(f"entities identified: {collect_entities(doc)}")
 print(f"speakers identified: {identify_speakers(doc)}")
 print(f"noun chunks identified: {identify_noun_chunks(doc)}")
+print(f"lemmas identified: {collect_lemmas(doc)}")
