@@ -11,6 +11,8 @@ nlp = spacy.load('en_core_web_sm')
     # change this so it reads the body paragraph instead but cleaned up
     # just fhand.open() or something
     # write a permutation() function that generates all possible kinds of strings that can be generated for a given set of text inputs, such as a mix of lower and uppercase etc.
+    # find other available models and methods I can use to tweak the existing data and extract valid fields with NLP integration
+    # update the README.md for the elegant-elefant-internship extraction
 
 text_array = [
     "Dr. Intan Azura Mokhtar asked the Minister for Education about the SkillsFuture initiative. Mr. Ong Ye Kung responded by detailing employment outcomes for graduates.",
