@@ -7,14 +7,16 @@ import spacy
 nlp = spacy.load('en_core_web_sm')
 
 # FUA 
+# run the sanitising functions first before extracting speakers
 # change this so it reads the body paragraph instead but cleaned up
 # just fhand.open() or something
 
-text = """
-Dr. Intan Azura Mokhtar asked the Minister for Education about the SkillsFuture initiative. Mr. Ong Ye Kung responded by detailing employment outcomes for graduates.
-"""
+text_array = [
+    "Dr. Intan Azura Mokhtar asked the Minister for Education about the SkillsFuture initiative. Mr. Ong Ye Kung responded by detailing employment outcomes for graduates.",
+    "\n     \n       EDUCATION OF HANDICAPPED CHILDREN  \n      \n     \n       \n          2.   \n         \n           Dr Tan Cheng Bock   \n           asked the First Deputy Prime Minister and Minister of Education why his Ministry is not willing to shoulder the responsibility of educating our handicapped children like the deaf, the blind and the retarded and whether such a move will deprive them of the best education possible.   \n      \n     \n       \n         \n           The Minister of State of Education (Dr Tay Eng Soon) (for the First Deputy Prime Minister and Minister of Education):   \n           Mr Speaker, Sir, I am replying on behalf of my Minister.   \n      \n     \n        Far from being unwilling to shoulder the responsibility, the Government has and will continue to give substantial assistance to voluntary organizations in the education of handicapped children. The Government's policy is to encourage the efforts of the voluntary organizations which are running the special schools and to support them wherever possible. The Ministry of Education has been providing teachers to teach in the eight special schools. Similarly, the Ministry of Social Affairs has been providing instructors for the School for the Blind and the School for the Deaf. In addition, the Ministries of Social Affairs and Health give annual grants to the special schools to meet part of their recurrent expenditure.   \n      \n     \n        In 1982, 69 government teachers and 11 instructors were sent to the special schools. The Ministry of Education had also agreed to deploy another 25 teachers to the special schools last year. The total government subsidy per pupil in the special schools taking into account the grants provided, the teachers and instructors provided was $1,626 per pupil in 1982. This is 41% more than the subsidy of $1,153 per pupil in our regular primary schools in 1982.   \n      \n     \n        In terms of physical facilities, two school buildings have been made available to the special schools at nominal rental. The Ministry is also assisting the Singapore Association for Retarded Children to take over the Griffiths School building for the Association's use on a nominal rental basis."
+]
 
-doc = nlp(text)
+doc = nlp(text_array[1])
 
 document_sentences_array = []
 for sent in doc.sents:
@@ -40,6 +42,14 @@ def identify_speakers(doc):
             speakers.append(ent.text)
     return speakers
 
+def identify_noun_chunks(doc):
+    noun_chunks = []
+    for chunk in doc.noun_chunks:
+        noun_chunks.append(chunk.text)
+    return noun_chunks
+
 # ----- execution code -----
 
+print(f"entities identified: {collect_entities(doc)}")
 print(f"speakers identified: {identify_speakers(doc)}")
+print(f"noun chunks identified: {identify_noun_chunks(doc)}")
