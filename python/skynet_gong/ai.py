@@ -7,9 +7,10 @@ import spacy
 nlp = spacy.load('en_core_web_sm')
 
 # FUA 
-# run the sanitising functions first before extracting speakers
-# change this so it reads the body paragraph instead but cleaned up
-# just fhand.open() or something
+    # run the sanitising functions first before extracting speakers
+    # change this so it reads the body paragraph instead but cleaned up
+    # just fhand.open() or something
+    # write a permutation() function that generates all possible kinds of strings that can be generated for a given set of text inputs, such as a mix of lower and uppercase etc.
 
 text_array = [
     "Dr. Intan Azura Mokhtar asked the Minister for Education about the SkillsFuture initiative. Mr. Ong Ye Kung responded by detailing employment outcomes for graduates.",
@@ -18,10 +19,12 @@ text_array = [
 
 doc = nlp(text_array[1])
 
-document_sentences_array = []
-for sent in doc.sents:
-    # print(sent.text)
-    document_sentences_array.append(sent.text)
+def collect_sentences(doc):
+    document_sentences_array = []
+    for sent in doc.sents:
+        # print(sent.text)
+        document_sentences_array.append(sent.text.strip())
+    return document_sentences_array
 
 def collect_tokens(doc):
     token_map = {}
@@ -51,7 +54,7 @@ def identify_speakers(doc):
     speakers = []
     for ent in doc.ents:
         if ent.label_ == "PERSON":
-            speakers.append(ent.text)
+            speakers.append(ent.text.strip())
     return speakers
 
 def identify_noun_chunks(doc):
@@ -62,7 +65,6 @@ def identify_noun_chunks(doc):
 
 # ----- execution code -----
 
-print(f"entities identified: {collect_entities(doc)}")
-print(f"speakers identified: {identify_speakers(doc)}")
-print(f"noun chunks identified: {identify_noun_chunks(doc)}")
-print(f"lemmas identified: {collect_lemmas(doc)}")
+for text in text_array:
+    print(collect_sentences(doc))
+    print(f"speakers identified: {identify_speakers(doc)}")
