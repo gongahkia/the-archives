@@ -57,11 +57,9 @@ def render_donut(A, B):
     for row in output:
         print(''.join(row))
 
-
 # Main loop to continuously render the spinning donut
 while True:
     render_donut(A, B)
     A += 0.04
     B += 0.02
     time.sleep(0.1)
-
