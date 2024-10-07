@@ -7,6 +7,12 @@ from flaskr.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+"""
+when using a blueprint, the name of the 
+blueprint is prepended to the name of the 
+function
+"""
+
 # ------
 
 @bp.route('/register', methods=('GET', 'POST'))
@@ -51,6 +57,12 @@ def register():
 
 # -----
 
+
+"""
+when we later call this endpoint we can reference 
+it with 'auth.login' because you added it to 
+the 'auth' blueprint 
+"""
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
 
