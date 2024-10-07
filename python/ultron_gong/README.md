@@ -5,7 +5,7 @@
 * [cohere API](https://docs.cohere.ai/): *free but limited usage*
 * [AI21 API](https://docs.ai21.com/): *free but limited usage*
 * [google cloud AI](https://cloud.google.com/products/ai): *free but limited usage, paid usage for further usage*
-* [replicate API](https://replicate.com/docs)
+* [replicate API](https://replicate.com/docs): *free but limited usage*
 
 ```console
 $ python3 {FILE_NAME}
