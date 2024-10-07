@@ -1,9 +1,19 @@
 import functools
-from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
-)
 from werkzeug.security import check_password_hash, generate_password_hash
 from flaskr.db import get_db
+from flask import (
+    Blueprint, flash, g, redirect, render_template, request, session, url_for
+) 
+
+"""
+every call of the render_template function 
+is contingent on an existing html template 
+being provided
+
+running the server without creating these 
+and then trying to access the url will result 
+in a TemplateNotFound error
+"""
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
