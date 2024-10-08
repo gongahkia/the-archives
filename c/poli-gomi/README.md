@@ -1,4 +1,4 @@
-# poli gomi
+# `poli gomi`
 
 a spinning square *(technically a polygon)*
 
