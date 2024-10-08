@@ -6,5 +6,5 @@ run:
 
 config:
 	@echo "installing required dependancies..."
-	@pip install selenium
+	@pip install selenium nltk
 	@sudo apt install chromium-chromedriver
