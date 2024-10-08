@@ -2,6 +2,8 @@
 
 Single-file implementation of a multiplayer fighting game played on the same device.
 
+The code here could also be used as a basic scaffold for any 2d fighting game.
+
 ## usage
 
 ```console
