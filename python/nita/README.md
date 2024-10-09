@@ -4,6 +4,10 @@
 
 Bomberman meets tron.
 
+Every 10 pickups return a bomb.
+
+Made in [Pygame](https://www.pygame.org/news).
+
 ## Usage
 
 ```console
@@ -18,3 +22,7 @@ $ make
 | Move Right| `D`              | Right Arrow (`→`)  |
 | Jump     | `W`               | Up Arrow (`↑`)     |
 | Drop trail / bomb    | `F`               | Down Arrow (`0`)   |
+
+## Screenshots
+
+![](./asset/nita.png)
