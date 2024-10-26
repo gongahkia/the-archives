@@ -2,7 +2,7 @@ VENV_NAME = venv
 PYTHON = python3
 
 config:
-	@pip install transformers torch diffusers chatlab dotenv cohere requests google-cloud-language
+	@pip install transformers torch diffusers chatlab dotenv cohere requests google-cloud-language sentencepiece
 
 .PHONY: venv
 venv:
