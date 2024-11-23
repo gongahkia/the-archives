@@ -6,6 +6,9 @@ pnpm-debug.log*
 .godot/
 logs/
 *.log
+.export/
+.import/
+*.import
 .vscode/*
 !.vscode/extensions.json
 .idea/
@@ -39,11 +42,6 @@ composer.lock
 .packages
 pubspec.lock
 build/
-bin/
-pkg/
-*.exe
-*.test
-*.out
 target/
 Cargo.lock
 .svelte-kit/
@@ -71,11 +69,7 @@ cabal.project.local.v2*
 *.ppcf
 *.hpf
 *.68kf
-*.fas
 *.fasl.*
-.export/
-.import/
-*.import
 build/
 dist/
 out/
@@ -89,6 +83,9 @@ coverage/
 .jest/
 *.stories.*
 storybook-static/
+*.local
+lerna-debug.log*
+dist-ssr/
 *.o
 *.a
 *.d
@@ -99,6 +96,3 @@ storybook-static/
 *.exe
 *.out
 public/
-*.local
-lerna-debug.log*
-dist-ssr/
