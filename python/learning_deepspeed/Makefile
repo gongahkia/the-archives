@@ -11,7 +11,7 @@ install:
 	@pip install mpi4py
 
 run:
-	deepspeed --num_gpus=1 $(SCRIPT) --deepspeed --deepspeed_config ds_config.json
+	deepspeed --num_gpus=1 $(SCRIPT) --deepspeed --deepspeed_config ds_config.json --local_rank=0
 
 clean:
 	rm -rf __pycache__ *.pyc

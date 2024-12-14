@@ -4,8 +4,10 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 import deepspeed
+import torchvision
 
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+torchvision.disable_beta_transforms_warning()
 
 class MyModel(nn.Module):
     def __init__(self):
@@ -46,7 +48,6 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=32, help="Batch size for training")
     parser.add_argument("--epochs", type=int, default=5, help="Number of epochs for training")
     deepspeed.add_config_arguments(parser)
-    parser.add_argument("--deepspeed_config", type=str, required=True,
-                        help="Path to the DeepSpeed configuration file")
+    parser.add_argument("--local_rank", type=int, default=0, help="Local rank for distributed training")
     args = parser.parse_args()
     train(args)
