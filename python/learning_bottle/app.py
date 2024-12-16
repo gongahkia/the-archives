@@ -12,3 +12,4 @@ def server_static(filepath):
 
 if __name__ == '__main__':
     run(app, host='localhost', port=8080)
+    
