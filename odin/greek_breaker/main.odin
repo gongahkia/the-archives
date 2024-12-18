@@ -43,7 +43,6 @@ proc init_game() {
     paddle = Paddle{x: WindowWidth / 2 - PaddleWidth / 2, y: WindowHeight - PaddleHeight - 10}
     ball = Ball{x: WindowWidth / 2, y: WindowHeight - PaddleHeight - BallRadius - 10, velocity_x: 5, velocity_y: -5}
     
-    // Initialize bricks
     for i in 0 .. BrickRows {
         for j in 0 .. BrickCols {
             bricks = append(bricks, Brick{x: f32(j * (WindowWidth / BrickCols)), y: f32(i * 30 + 50), width: WindowWidth / BrickCols, height: 20, is_destroyed: false})
@@ -52,11 +51,9 @@ proc init_game() {
 }
 
 proc update_game() {
-    // Update ball position
     ball.x += ball.velocity_x
     ball.y += ball.velocity_y
     
-    // Ball collision with walls
     if (ball.x < BallRadius or ball.x > WindowWidth - BallRadius) {
         ball.velocity_x = -ball.velocity_x
     }
@@ -65,24 +62,20 @@ proc update_game() {
         ball.velocity_y = -ball.velocity_y
     }
     
-    // Ball collision with paddle
     if (ball.y + BallRadius >= paddle.y and ball.x >= paddle.x and ball.x <= paddle.x + PaddleWidth) {
         ball.velocity_y = -ball.velocity_y
-        ball.y = paddle.y - BallRadius // Prevent sticking to the paddle
+        ball.y = paddle.y - BallRadius
     }
 
-    // Check collision with bricks
     for brick in bricks {
         if not brick.is_destroyed and 
            (ball.x + BallRadius >= brick.x and 
             ball.x - BallRadius <= brick.x + brick.width and 
             ball.y + BallRadius >= brick.y and 
             ball.y - BallRadius <= brick.y + brick.height) {
-            brick.is_destroyed = true // Mark brick as destroyed
-            score += 10 // Increase score for breaking a brick
-            ball.velocity_y = -ball.velocity_y // Bounce back the ball
-            
-            // Optional: Add effects or sounds here.
+            brick.is_destroyed = true
+            score += 10
+            ball.velocity_y = -ball.velocity_y
         }
     }
 }
@@ -90,20 +83,15 @@ proc update_game() {
 proc render_game() {
     sdl2.ClearScreen()
     
-    // Draw paddle
-    sdl2.DrawRect(paddle.x, paddle.y, PaddleWidth, PaddleHeight, sdl2.Color{0, 0, 255, 255}) // Blue
+    sdl2.DrawRect(paddle.x, paddle.y, PaddleWidth, PaddleHeight, sdl2.Color{0, 0, 255, 255})
     
-    // Draw ball
-    sdl2.DrawCircle(i32(ball.x), i32(ball.y), BallRadius, sdl2.Color{255, 0, 0, 255}) // Red
+    sdl2.DrawCircle(i32(ball.x), i32(ball.y), BallRadius, sdl2.Color{255, 0, 0, 255})
     
-    // Draw bricks
     for brick in bricks {
         if not brick.is_destroyed {
-            sdl2.DrawRect(brick.x, brick.y, brick.width, brick.height, sdl2.Color{0, 255, 0, 255}) // Green
+            sdl2.DrawRect(brick.x, brick.y, brick.width, brick.height, sdl2.Color{0, 255, 0, 255})
         }
     }
-
-    // Display score (optional)
 }
 
 proc handle_input() {
@@ -111,24 +99,23 @@ proc handle_input() {
 
     while sdl2.PollEvent(&event) != 0 {
         if event.type == sdl2.QUIT {
-            return false // Quit the game loop on close event.
+            return false 
         }
 
         if event.type == sdl2.KEYDOWN {
             switch event.key.keysym.sym {
                 case sdl2.K_LEFT:
-                    paddle.x -= 20 // Move left
+                    paddle.x -= 20 
                 case sdl2.K_RIGHT:
-                    paddle.x += 20 // Move right
+                    paddle.x += 20 
             }
         }
         
-        // Keep paddle within window bounds.
         if paddle.x < 0 { paddle.x = 0 }
         if paddle.x > WindowWidth - PaddleWidth { paddle.x = WindowWidth - PaddleWidth }
     }
     
-    return true // Continue running the game loop.
+    return true 
 }
 
 proc main() {
@@ -151,9 +138,8 @@ proc main() {
         
         render_game()
         
-        sdl2.Delay(16) // Roughly ~60 FPS
+        sdl2.Delay(16)
         
-        // Optionally display the score on the screen.
         fmt.printf("Score: %d\n", score)
         
         if ball.y > WindowHeight { 
@@ -161,13 +147,12 @@ proc main() {
             break; 
         }
         
-        sdl2.Present(window) // Update the window display.
+        sdl2.Present(window) 
         
         if all_bricks_destroyed() { 
             fmt.printf("You Win! Final Score: %d\n", score)
             break; 
         }
-        
      }
 }
 

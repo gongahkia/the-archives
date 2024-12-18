@@ -6,4 +6,10 @@ run:
 
 config:
 	@echo "installing odin config files..."
-	@sudo apt install odin
+	@git clone https://github.com/odin-lang/Odin.git
+	@cd Odin
+	@make release-native
+	@echo 'export PATH="$HOME/Odin:$PATH"' >> ~/.bashrc
+	@source ~/.bashrc
+	@odin version
+
