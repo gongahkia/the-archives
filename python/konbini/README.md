@@ -18,4 +18,6 @@ Small horror game written in Python with Pygame.
 ```py
 $ git clone https://github.com/gongahkia/konbini
 $ make
+$ docker build -t konbini .
+$ docker run -d --name konbini-container -p 5000:5000 konbini
 ```
