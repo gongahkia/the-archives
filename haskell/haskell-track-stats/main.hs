@@ -1,33 +1,34 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import Control.Monad (void)
+import Control.Monad (void, forM_)
 import Data.Aeson (FromJSON, decode, (.:), withObject)
 import Data.ByteString.Lazy.Char8 as BL (pack)
 import Data.Text as T (unpack, Text)
 import Network.HTTP.Conduit (simpleHttp, Request, parseRequest, responseBody)
 import Network.HTTP.Simple (setRequestHeader, getResponseBody)
 import qualified Data.HashMap.Strict as HM
+import System.Environment (getEnv)
+import Dotenv (loadFile)
 
--- Replace these values with your own Spotify API credentials
-clientId :: String
-clientId = "your_client_id"
+clientId :: IO String
+clientId = getEnv "CLIENT_ID"
 
-clientSecret :: String
-clientSecret = "your_client_secret"
+clientSecret :: IO String
+clientSecret = getEnv "CLIENT_SECRET"
 
--- Function to get access token
 getAccessToken :: IO String
 getAccessToken = do
+    cid <- clientId
+    csecret <- clientSecret
     let url = "https://accounts.spotify.com/api/token"
     request <- parseRequest url
-    let request' = setRequestHeader "Authorization" [BL.pack ("Basic " ++ encodeBase64 (clientId ++ ":" ++ clientSecret))] request
+    let request' = setRequestHeader "Authorization" [BL.pack ("Basic " ++ encodeBase64 (cid ++ ":" ++ csecret))] request
     response <- simpleHttp (show request')
     let token = decode response :: Maybe Value
     return $ case token of
         Just v -> v HM.! "access_token"
         Nothing -> error "Failed to get access token"
 
--- Function to get user's top tracks
 getTopTracks :: String -> IO (Maybe Value)
 getTopTracks accessToken = do
     let url = "https://api.spotify.com/v1/me/top/tracks"
@@ -36,7 +37,6 @@ getTopTracks accessToken = do
     response <- simpleHttp (show request')
     return $ decode response
 
--- Function to format statistics in a receipt style
 formatReceipt :: Value -> IO ()
 formatReceipt tracks = do
     putStrLn "🎶 Your Top Tracks Receipt 🎶"
@@ -57,6 +57,7 @@ formatReceipt tracks = do
 
 main :: IO ()
 main = do
+    loadFile ".env"
     accessToken <- getAccessToken
     topTracks <- getTopTracks accessToken
     
