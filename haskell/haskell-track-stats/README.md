@@ -1,6 +1,6 @@
-# Haskell track stats
+# `Haskell track stats`
 
-Remade something I saw recently in Haskell.  
+Remade something I saw recently in Haskell, taking clear inspiration from [Spotify Wrapped](https://www.spotify.com/sg-en/wrapped/).
   
 Outputs the following.  
 
