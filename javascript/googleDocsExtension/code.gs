@@ -7,7 +7,7 @@ function onOpen() {
 
 function showSidebar() {
   const html = HtmlService.createHtmlOutputFromFile('Sidebar')
-      .setTitle('My Sidebar');
+      .setTitle('Gong testing the Sidebar');
   DocumentApp.getUi().showSidebar(html);
 }
 
