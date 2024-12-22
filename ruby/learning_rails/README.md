@@ -10,6 +10,8 @@ First, run these commands.
 
 ```console
 $ cd thomas_the_tank_engine_app/
+$ bin/rails webpacker:install
+$ bin/rails assets:precompile
 $ bin/rails server
 ```
 

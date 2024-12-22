@@ -140,3 +140,5 @@ Thumbs.db
 /capybara-*.html
 /rspec-*.txt
 .rspec_status
+config/master.key
+tmp/cache
