@@ -98,6 +98,7 @@ dist-ssr/
 public/
 /log/*
 /tmp/*
+/tmp/cache/
 !/log/.keep
 !/tmp/.keep
 /db/*.sqlite3
