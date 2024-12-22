@@ -4,6 +4,8 @@ Trying out [ruby on rails]().
 
 Relies on ruby, rails, node.js and yarn.
 
+![](./asset/site.png)
+
 ## Usage
 
 First, run these commands.
