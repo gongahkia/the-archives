@@ -2,7 +2,12 @@
 
 * locally scheduled using [anacron](https://en.wikipedia.org/wiki/Anacron)
 * requires `.env` file specifying user credentials and scraping configuration as below
-* leave field empty if no specification
+* leave fields empty if no specification
+
+## Usage
+
+1. First run `make config`
+2. Then specify configuration as below in a `.env` file
 
 ```env
 USERNAME=

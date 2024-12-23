@@ -142,3 +142,4 @@ Thumbs.db
 .rspec_status
 config/master.key
 tmp/cache
+.env

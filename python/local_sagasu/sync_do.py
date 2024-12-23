@@ -296,7 +296,7 @@ def add_missing_timeslots(booking_details):
     return complete_booking_details
 
 
-def scrape_smu_fbs(base_url, screenshot_filepath, booking_log_filepath, date_raw, duration_hrs, start_time, room_capacity_raw, building_array, floor_array, facility_type_array, equipment_array):
+def scrape_smu_fbs(base_url, screenshot_filepath, booking_log_filepath):
     """
     handle automated login to SMU FBS based on
     personal credentials.json and scrapes all booked
@@ -433,6 +433,10 @@ def scrape_smu_fbs(base_url, screenshot_filepath, booking_log_filepath, date_raw
     errors = []
     local_credentials = read_credentials()
     local_config = read_config()
+    if local_config:
+        print(local_config)
+    else:
+        print("Error: Unable to read local configuration from the .env file.")
 
     DATE_RAW = local_config["DATE_RAW"]
     DURATION_HRS = local_config["DURATION_HRS"]
@@ -835,22 +839,10 @@ def scrape_smu_fbs(base_url, screenshot_filepath, booking_log_filepath, date_raw
 
 if __name__ == "__main__":
 
-    DATE_RAW = "23 december 2024"
-    DURATION_HRS = 2.5
-    START_TIME = "14:00"
-    ROOM_CAPACITY_RAW = 7
-    BUILDING_ARRAY = [
-        "School of Accountancy",
-        "School of Computing & Information Systems 1",
-    ]
-    FLOOR_ARRAY = ["Basement 1", "Level 1", "Level 2", "Level 4"]
-    FACILITY_TYPE_ARRAY = ["Meeting Pod", "Group Study Room"]
-    EQUIPMENT_ARRAY = []
-
     SCREENSHOT_FILEPATH = "./screenshot_log/"
     BOOKING_LOG_FILEPATH = "./booking_log/"
     TARGET_URL = "https://fbs.intranet.smu.edu.sg/home"
 
     if check_file():
 
-        print(f"errors: {scrape_smu_fbs(TARGET_URL)}")
+        print(f"errors: {scrape_smu_fbs(TARGET_URL, SCREENSHOT_FILEPATH, BOOKING_LOG_FILEPATH)}")
